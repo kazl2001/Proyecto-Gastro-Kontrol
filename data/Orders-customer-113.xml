@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orders>
+    <order>
+        <id>67</id>
+        <order_item>
+            <menuItem>Spaghetti Carbonara</menuItem>
+            <quantity>3</quantity>
+        </order_item>
+        <order_item>
+            <menuItem>Spaghetti Carbonara</menuItem>
+            <quantity>2</quantity>
+        </order_item>
+    </order>
+</orders>

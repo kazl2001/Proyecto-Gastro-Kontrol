@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.order.update.OrderUpdateController">
+
+
+   <MFXButton layoutX="311.0" layoutY="477.0" mnemonicParsing="false" onAction="#updateOrder" prefHeight="40.0" prefWidth="138.0" text="MODIFY ORDER">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </MFXButton>
+   <MFXTableView fx:id="orderItemsUTableView" layoutX="491.0" layoutY="200.0" prefHeight="251.0" prefWidth="249.0" footerVisible="false"/>
+   <Text layoutX="628.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER ITEMS">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <MFXButton layoutX="670.0" layoutY="110.0" mnemonicParsing="false" onAction="#addOrderItem" prefHeight="28.0" prefWidth="68.0" text="ADD" />
+   <MFXButton layoutX="671.0" layoutY="463.0" mnemonicParsing="false" onAction="#removeOrderItem" prefHeight="28.0" prefWidth="68.0" text="REMOVE" />
+   <MFXDatePicker fx:id="orderDateUDatePicker" layoutX="292.0" layoutY="87.0" prefHeight="54.0" prefWidth="175.0" promptText="Date / time" />
+   <MFXComboBox fx:id="customerUComboBox" layoutX="292.0" layoutY="396.0" prefHeight="54.0" prefWidth="175.0" promptText="Customer" />
+   <MFXComboBox fx:id="tableUComboBox" layoutX="292.0" layoutY="320.0" prefHeight="54.0" prefWidth="175.0" promptText="Table" />
+   <MFXComboBox fx:id="quantityUComboBox" layoutX="619.0" layoutY="61.0" prefHeight="40.0" prefWidth="103.0" promptText="Quantity" />
+   <MFXComboBox fx:id="menuItemUComboBox" layoutX="490.0" layoutY="61.0" promptText="Menu Item" />
+   <MFXTableView fx:id="orderUTableView" layoutX="33.0" layoutY="87.0" prefHeight="362.0" prefWidth="250.0" footerVisible="false" />
+   <Text layoutX="26.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDERS">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Text>
+   <MFXTextField fx:id="orderUHourTextField" layoutX="292.0" layoutY="168.0" prefHeight="50.0" prefWidth="8.0" />
+   <MFXTextField fx:id="orderUMinuteTextField" layoutX="292.0" layoutY="244.0" prefHeight="50.0" prefWidth="8.0" />
+   <MFXTextField fx:id="orderUSecondTextField" layoutX="393.0" layoutY="210.0" prefHeight="50.0" prefWidth="8.0" />
+   <Text layoutX="295.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hours" />
+   <Text layoutX="295.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Minutes" />
+   <Text layoutX="393.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seconds" />
+   <Text layoutX="299.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer" />
+   <Text layoutX="300.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Table" />
+</AnchorPane>

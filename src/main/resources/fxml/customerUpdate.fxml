@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.customer.update.CustomerUpdateController">
+   <MFXTableView fx:id="customersUTableView" layoutX="24.0" layoutY="42.0" prefHeight="443.0" prefWidth="558.0" footerVisible="false"/>
+   <MFXTextField fx:id="firstNameUTextField" floatingText="First Name" layoutX="592.0" layoutY="42.0" prefHeight="50.0" prefWidth="135.0" promptText="Write here" />
+   <MFXTextField fx:id="lastNameUTextField" floatingText="Last Name" layoutX="592.0" layoutY="101.0" prefHeight="50.0" prefWidth="135.0" promptText="Write here" />
+   <MFXTextField fx:id="emailUTextField" floatingText="Email" layoutX="593.0" layoutY="218.0" prefHeight="50.0" prefWidth="135.0" promptText="Write here" />
+   <MFXTextField fx:id="phoneUTextField" floatingText="Phone Number" layoutX="593.0" layoutY="276.0" prefHeight="50.0" prefWidth="135.0" promptText="Write here" />
+   <MFXButton layoutX="616.0" layoutY="450.0" mnemonicParsing="false" onAction="#updateCustomer" prefHeight="34.0" prefWidth="88.0" rippleColor="WHITE" text="UPDATE" />
+   <MFXDatePicker fx:id="dobUDatePicker" layoutX="593.0" layoutY="159.0" prefHeight="50.0" prefWidth="135.0" promptText="Date of birth" />
+</AnchorPane>

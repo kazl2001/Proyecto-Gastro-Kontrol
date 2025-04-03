@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orders>
+    <order>
+        <id>70</id>
+        <order_item>
+            <menuItem>Spaghetti Carbonara</menuItem>
+            <quantity>1</quantity>
+        </order_item>
+    </order>
+    <order>
+        <id>71</id>
+        <order_item>
+            <menuItem>Grilled Salmon</menuItem>
+            <quantity>3</quantity>
+        </order_item>
+    </order>
+</orders>
