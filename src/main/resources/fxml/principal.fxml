@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.screens.principal.PrincipalController">
+    <center>
+    </center>
+    <top>
+        <MenuBar fx:id="principalMenu">
+            <Menu mnemonicParsing="false" text="OPTIONS">
+                <MenuItem fx:id="menuItemLogout" mnemonicParsing="false" onAction="#menuClick" text="Logout"/>
+                <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#exit" text="Exit"/>
+            </Menu>
+            <Menu  mnemonicParsing="false" text="CUSTOMERS">
+                <MenuItem fx:id="menuItemCustomerList" mnemonicParsing="false" onAction="#menuClick"
+                          text="List"/>
+                <MenuItem fx:id="menuItemCustomerAdd" mnemonicParsing="false" onAction="#menuClick" text="Add"/>
+                <MenuItem fx:id="menuItemCustomerUpdate" mnemonicParsing="false" onAction="#menuClick"
+                          text="Update"/>
+                <MenuItem fx:id="menuItemCustomerDelete" mnemonicParsing="false" onAction="#menuClick"
+                          text="Delete"/>
+
+            </Menu>
+            <Menu mnemonicParsing="false" text="ORDERS">
+                <MenuItem fx:id="menuItemOrderList" mnemonicParsing="false" onAction="#menuClick" text="List"/>
+                <MenuItem fx:id="menuItemOrderAdd" mnemonicParsing="false" onAction="#menuClick" text="Add"/>
+                <MenuItem fx:id="menuItemOrderUpdate" mnemonicParsing="false" onAction="#menuClick" text="Update"/>
+                <MenuItem fx:id="menuItemOrderDelete" mnemonicParsing="false" onAction="#menuClick" text="Delete"/>
+
+            </Menu>
+        </MenuBar>
+    </top>
+</BorderPane>

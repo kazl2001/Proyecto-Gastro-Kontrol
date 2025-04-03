@@ -1,0 +1,80 @@
+module Multiscreen_Restaurant_Application {
+
+    requires javafx.graphics;
+    requires javafx.controls;
+    requires spring.jdbc;
+    requires javafx.fxml;
+    requires MaterialFX;
+    requires lombok;
+    requires jakarta.xml.bind;
+    requires spring.tx;
+    requires org.apache.logging.log4j;
+    requires jakarta.inject;
+    requires jakarta.cdi;
+    requires io.vavr;
+    requires io.reactivex.rxjava3;
+    requires org.pdfsam.rxjavafx;
+    requires java.logging;
+    requires java.sql;
+    requires com.zaxxer.hikari;
+
+
+    exports ui.main to javafx.graphics;
+    exports ui.screens.principal;
+    exports ui.screens.customer.add;
+    exports ui.screens.login;
+    exports ui.screens.welcome;
+    exports ui.screens.customer.list;
+    exports ui.screens.customer.update;
+    exports ui.screens.customer.delete;
+    exports ui.screens.order.list;
+    exports ui.screens.order.add;
+    exports ui.screens.order.update;
+    exports ui.screens.order.delete;
+    exports ui.screens.common;
+    exports common.config;
+    exports model;
+    exports model.error;
+    exports model.error.customer;
+    exports model.error.order;
+    exports services;
+    exports services.impl;
+    exports model.error.item;
+    exports dao.connection;
+    exports model.xml;
+    exports dao.impl.xml;
+
+    opens ui.screens.principal;
+    opens common.config;
+    opens ui.screens.login;
+    opens ui.screens.welcome;
+    opens ui.screens.customer.list;
+    opens ui.screens.customer.add;
+    opens ui.screens.customer.update;
+    opens ui.screens.customer.delete;
+    opens ui.screens.order.list;
+    opens ui.screens.order.update;
+    opens ui.screens.order.delete;
+    opens ui.screens.order.add;
+    opens ui.main;
+    opens ui.screens.common;
+    opens model;
+    opens services;
+    opens model.error;
+    opens model.error.customer;
+    opens model.error.order;
+    opens config;
+    opens fxml;
+    opens model.error.item;
+    opens dao.connection;
+    opens services.impl;
+    opens model.xml;
+    opens dao.impl.xml;
+    exports common.constants;
+    opens common.constants;
+    exports dao;
+    opens dao;
+    exports dao.impl.jdbc_spring;
+    opens dao.impl.jdbc_spring;
+
+}

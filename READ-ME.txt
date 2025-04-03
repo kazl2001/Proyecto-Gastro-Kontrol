@@ -1,0 +1,8 @@
+Hello!
+
+Just in case you did not remember, the username is `root` and the password is `1111` for the admin role.
+
+
+Have a good day!
+
+-Kevin
