@@ -1,8 +1,12 @@
 package ui.screens.login;
 
+import common.constants.Constants;
+import common.constants.ErrorConstants;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import ui.screens.common.BaseScreenController;
 
 
@@ -13,11 +17,42 @@ public class LoginController extends BaseScreenController {
     @FXML
     private MFXTextField passField;
 
+    @FXML
+    private ImageView imageUser;
+    @FXML
+    private ImageView imagePassword;
+
+    @FXML
+    private ImageView logoApp;
     private final LoginViewModel vm;
 
     @Inject
     public LoginController(LoginViewModel vm) {
         this.vm = vm;
+    }
+
+    @FXML
+    private void initialize() {
+        try {
+            // Images loading
+            Image imageU = new Image(getClass().getResource(Constants.USER_IMAGE).toExternalForm());
+            imageUser.setImage(imageU);
+
+            Image imageP = new Image(getClass().getResource(Constants.PASSWORD_IMAGE).toExternalForm());
+            imagePassword.setImage(imageP);
+
+            Image imageLogo = new Image(getClass().getResource(Constants.LOGO_IMAGE).toExternalForm());
+            logoApp.setImage(imageLogo);
+
+            // Password Field Control
+            passField.addEventFilter(javafx.scene.input.KeyEvent.KEY_PRESSED, event -> {
+                if (event.isControlDown() && event.getCode() == javafx.scene.input.KeyCode.C) {
+                    event.consume(); // Disallows the Ctrl + C
+                }
+            });
+        } catch (Exception ex) {
+            System.err.println(ErrorConstants.ERROR_LOADING_IMAGE + ex.getMessage());
+        }
     }
 
     @FXML

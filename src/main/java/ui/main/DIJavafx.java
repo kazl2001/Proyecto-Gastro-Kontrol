@@ -17,9 +17,10 @@ public class DIJavafx extends Application {
     public void start(Stage primaryStage) throws Exception {
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
         final SeContainer container = initializer.initialize();
-        primaryStage.setMinWidth(800);
-        primaryStage.setMinHeight(600);
-        primaryStage.setResizable(false);
+        primaryStage.setMinWidth(1920);
+        primaryStage.setMinHeight(1080);
+        primaryStage.setResizable(false); // Resize the window
+        primaryStage.setMaximized(true);// Maximize the window when you start it
         container.getBeanManager().getEvent().select(new AnnotationLiteral<StartupScene>() {
         }).fire(primaryStage);
     }

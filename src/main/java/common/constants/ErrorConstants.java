@@ -2,6 +2,8 @@ package common.constants;
 
 public class ErrorConstants {
 
+
+
     public ErrorConstants() {
     }
 
@@ -16,6 +18,7 @@ public class ErrorConstants {
     public static final String NO_GENERATED_KEY = "Key was not generated";
     public static final String CONFIRMATION_NEEDED_ERROR = "Confirmation needed";
     public static final String UNIQUE_FIELD_CONSTRAINT_ERROR = "This username is taken. Please choose another one.";
+    public static final String ERROR_LOADING_IMAGE = "Error loading the image: ";
 
 
     //ERROR NUMERIC CODES
@@ -29,5 +32,6 @@ public class ErrorConstants {
     public static final int INVALID_ENTITY_DATA_ERROR_CODE = 2002;
     public static final int INVALID_DATA_FORMAT_ERROR_CODE = 3002;
     public static final int OPERATION_SUCCESSFUL_CODE = 0;
+    public static final int CODE_ERROR_LOADING_IMAGE = 50;
 
 }

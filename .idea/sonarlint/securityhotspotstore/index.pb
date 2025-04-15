@@ -145,8 +145,6 @@ f
 6src/main/java/services/impl/CredentialServiceImpl.java,4\b\4b56b31c87d082900e1863318efb1c678138cecf
 Z
 *src/main/java/common/config/ConfigXML.java,2\e\2e612591a59cdcbc98a8065762b27dd972dee4c0
-C
-hs_err_pid30556.log,4\d\4d2932774515d4509674c525164b432cdc41fbb7
 K
 data/Orders-customer-32.xml,b\7\b7f6c228cf8503a5861abf530c54980edf7b2e35
 o
@@ -155,12 +153,6 @@ K
 data/Orders-customer-33.xml,3\f\3f23f4fc70c25af979aac2782b3445a4bf6fb6dc
 ]
 -src/main/java/common/constants/Constants.java,8\4\841878111fd445ffddb207f28e650992fbd58c27
-b
-2src/main/java/dao/deprecated/DaoCustomersImpl.java,b\f\bf1c9dda2cc19a57a8ca47164595e1b75daf076f
-c
-3src/main/java/dao/deprecated/DaoOrderItemsImpl.java,d\0\d0c16e28c5bcefc1745ef9dbb6ad3c6b86b861ed
-_
-/src/main/java/dao/deprecated/DaoOrdersImpl.java,7\c\7c796f6db2d447c16b9aaa4647dec58d37242f0b
 S
 #src/main/java/dao/DaoCustomers.java,f\0\f0e3e4ad8fe4780bea1caf157aae8e5f239ce16b
 b
@@ -213,8 +205,6 @@ U
 %src/main/java/dao/DaoCredentials.java,f\3\f392861c1f0903e7c54bf767ec7909d2092e2f9a
 R
 "src/main/resources/fxml/login.fxml,a\e\aec4516eceee1c7f893d7faf03a19b56fcc11f15
-ü
-o.idea/dataSources/b84bb302-6829-4312-8baa-1b14c0b40e66/storage_v2/_src_/schema/madegomez_restaurant.t2tNqA.meta,8\7\87cece1cc9350d31ec9cc958c766f68bf764e73b
 ê
 `.idea/dataSources/b84bb302-6829-4312-8baa-1b14c0b40e66/storage_v2/_src_/schema/mysql.osA4Bg.meta,0\f\0ff3dde875a862ea3777dfe7841cfe3b0ebe834c
 ë
@@ -225,14 +215,6 @@ m.idea/dataSources/b84bb302-6829-4312-8baa-1b14c0b40e66/storage_v2/_src_/schema/
 ^.idea/dataSources/b84bb302-6829-4312-8baa-1b14c0b40e66/storage_v2/_src_/schema/sys.zb4BAA.meta,0\e\0e31432a5b0f7009dd26dabba8fcd4ecb9934afc
 ê
 `.idea/dataSources/b84bb302-6829-4312-8baa-1b14c0b40e66/storage_v2/_src_/schema/world.khvBBg.meta,b\9\b95c7c6a5ca2c489a99e6cdec45a1bde6080ecd1
-j
-:.idea/dataSources/b84bb302-6829-4312-8baa-1b14c0b40e66.xml,2\2\22bf639e429d955ad1c975511468b5ed56dfc30b
-j
-:.idea/dataSources/f8a42e88-4718-4eb8-baab-a9e26c322320.xml,6\f\6fdb342dc54f8f57f09cc8518533aa7c1087fea4
-ù
-m.idea/dataSources/f8a42e88-4718-4eb8-baab-a9e26c322320/storage_v2/_src_/schema/information_schema.FNRwLQ.meta,4\6\465d2b81efd99f193dd2069ec1b4b82611363160
-•
-u.idea/dataSources/f8a42e88-4718-4eb8-baab-a9e26c322320/storage_v2/_src_/schema/IgnacioLlorente_restaurant.J8_FmA.meta,5\9\596712900ebdce87e93d8ae9d93bb19ed4a99261
 ù
 m.idea/dataSources/b84bb302-6829-4312-8baa-1b14c0b40e66/storage_v2/_src_/schema/performance_schema.kIw0nw.meta,e\b\eb5bdef69c2993c01c5f0ea2765c457cccf232bf
 L
@@ -250,3 +232,9 @@ A
 +src/main/java/services/MenuItemService.java,d\5\d5de81a40305b7e8cd736f724cd01f562ae79d12
 Y
 )src/main/resources/fxml/customerList.fxml,e\c\ec16f42c7ef7470226daa2b07eebcb40ef2e7a82
+V
+&src/main/resources/fxml/principal.fxml,9\6\96a547f44bdf7c7b5975d9c7a3df85ebd7e9993c
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
