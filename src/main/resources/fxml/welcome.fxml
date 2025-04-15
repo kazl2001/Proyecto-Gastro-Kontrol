@@ -1,20 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.welcome.WelcomeController">
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: linear-gradient(to bottom right, #dceefb, #a3cef1);" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.welcome.WelcomeController">
 
-    <Text layoutX="149.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
-        <font>
-            <Font size="40.0"/>
-        </font>
-    </Text>
-    <Text fx:id="userWTextArea" layoutX="337.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
-        <font>
-            <Font size="40.0"/>
-        </font>
-    </Text>
+    <ImageView fx:id="backgroundImage" fitHeight="1080.0" fitWidth="1920.0" layoutX="0.0" layoutY="0.0" preserveRatio="false" />
+
+    <!-- Panel translucid -->
+    <StackPane layoutX="560.0" layoutY="340.0" prefHeight="400.0" prefWidth="800.0">
+        <children>
+            <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffffffbb" height="400.0" width="800.0">
+                <effect>
+                    <DropShadow color="#a0a0a0" radius="20" />
+                </effect>
+            </Rectangle>
+
+            <VBox alignment="CENTER" spacing="30.0">
+                <children>
+                    <Text text="Welcome">
+                        <font>
+                            <Font size="70.0" />
+                        </font>
+                    </Text>
+                    <Text fx:id="userWTextArea" text="User">
+                        <font>
+                            <Font size="50.0" />
+                        </font>
+                    </Text>
+                </children>
+            </VBox>
+        </children>
+    </StackPane>
+
 </AnchorPane>

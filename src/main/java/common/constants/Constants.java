@@ -37,13 +37,12 @@ public class Constants {
     //DAO XML
     public static final String TEXT_FORMAT = "Orders-customer-%s.xml";
 
-    //Images Constants
-
+    //IMAGES CONSTANTS
     public static final String LOGO_IMAGE = "/media/logo.png";
     public static final String USER_IMAGE = "/media/user.png";
     public static final String PASSWORD_IMAGE = "/media/padlock.png";
 
-    public static final String A_IMAGE = "/media/";
+    public static final String WELCOME_BACKGROUND_IMAGE = "/media/background_w.png";
     public static final String B_IMAGE = "";
     public static final String C_IMAGE = "";
 
