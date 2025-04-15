@@ -19,9 +19,8 @@ public class WelcomeController extends BaseScreenController {
     @Override
     public void loadedPrincipal() {
         userWTextArea.setText(getPrincipalController().getUsername() + ScreenConstants.EXCLAMATION_MARK);
-        // Load the image
+        // Load the background image
         backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.WELCOME_BACKGROUND_IMAGE)));
-        backgroundImage.setOpacity(0.9);
 
     }
 }

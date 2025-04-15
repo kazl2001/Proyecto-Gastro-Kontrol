@@ -1,5 +1,6 @@
 package ui.screens.customer.update;
 
+import common.constants.Constants;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -7,6 +8,8 @@ import jakarta.inject.Inject;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Customer;
 import ui.screens.common.BaseScreenController;
 import ui.screens.common.ScreenConstants;
@@ -30,6 +33,8 @@ public class CustomerUpdateController extends BaseScreenController implements In
     private MFXTextField phoneUTextField;
     @FXML
     private MFXDatePicker dobUDatePicker;
+    @FXML
+    private ImageView backgroundImage;
     private Customer selectedCustomer;
     private final CustomerUpdateViewModel vm;
 
@@ -48,6 +53,9 @@ public class CustomerUpdateController extends BaseScreenController implements In
     public void loadedPrincipal() {
         vm.getCustomerList();
         getPrincipalController().createCustomersTable(customersUTableView);
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.UPDATE_CUSTOMER_BACKGROUND_IMAGE)));
+        customersUTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
 
         //Upon selection, this method will populate the fields with the selected customer's data
         customersUTableView.getSelectionModel().selectionProperty().addListener((observableValue, customer, customerNew) -> {

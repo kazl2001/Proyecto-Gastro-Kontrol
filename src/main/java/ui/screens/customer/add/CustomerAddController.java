@@ -1,5 +1,6 @@
 package ui.screens.customer.add;
 
+import common.constants.Constants;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -7,6 +8,8 @@ import jakarta.inject.Inject;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Credential;
 import model.Customer;
 import ui.screens.common.BaseScreenController;
@@ -35,6 +38,8 @@ public class CustomerAddController extends BaseScreenController implements Initi
     private MFXTextField phoneATextField;
     @FXML
     private MFXTableView<Customer> customersATableView;
+    @FXML
+    private ImageView backgroundImage;
 
     private final CustomerAddViewModel vm;
 
@@ -64,6 +69,9 @@ public class CustomerAddController extends BaseScreenController implements Initi
     public void loadedPrincipal() {
         vm.getCustomerList();
         getPrincipalController().createCustomersTable(customersATableView);
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.ADD_CUSTOMER_BACKGROUND_IMAGE)));
+        customersATableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
     }
 
     private Optional<Customer> getCustomerFromScreen() {

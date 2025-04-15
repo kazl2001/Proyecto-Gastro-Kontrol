@@ -244,3 +244,9 @@ G.idea/sonarlint/issuestore/9/6/96a547f44bdf7c7b5975d9c7a3df85ebd7e9993c,c\b\cb
 Q.idea/sonarlint/securityhotspotstore/9/6/96a547f44bdf7c7b5975d9c7a3df85ebd7e9993c,d\a\dac3b5a62a0e492573001ffde4b8be0a1a8b9708
 T
 $src/main/resources/fxml/welcome.fxml,d\b\db66d8c806e37f5d0f429b9c7b0bdfdf0014d6d1
+X
+(src/main/resources/fxml/customerAdd.fxml,9\f\9f4ea79d5b540a4551395aed80e1835271600929
+[
++src/main/resources/fxml/customerUpdate.fxml,f\1\f1496d1a895e2c4a3fef30452cd0233ef6eca6e7
+[
++src/main/resources/fxml/customerDelete.fxml,1\3\139c63f3c5eeb72dc3256e077cb53449d2613b3f

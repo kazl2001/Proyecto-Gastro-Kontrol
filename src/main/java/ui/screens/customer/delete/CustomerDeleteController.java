@@ -1,11 +1,14 @@
 package ui.screens.customer.delete;
 
+import common.constants.Constants;
 import common.constants.ErrorConstants;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Customer;
 import model.Order;
 import ui.screens.common.BaseScreenController;
@@ -20,6 +23,8 @@ public class CustomerDeleteController extends BaseScreenController implements In
     private MFXTableView<Order> ordersDTableView;
     @FXML
     private MFXTableView<Customer> customersDTableView;
+    @FXML
+    private ImageView backgroundImage;
     private Customer selectedCustomer;
     private final CustomerDeleteViewModel vm;
 
@@ -40,6 +45,9 @@ public class CustomerDeleteController extends BaseScreenController implements In
         vm.getCustomerList();
         getPrincipalController().createCustomersTable(customersDTableView);
         getPrincipalController().createOrdersTable(ordersDTableView);
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.DELETE_CUSTOMER_BACKGROUND_IMAGE)));
+        customersDTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
 
         //Upon selection, this method will populate the orders table with those of the selected customer
         customersDTableView.getSelectionModel().selectionProperty().addListener((observableValue, customer, customerNew) -> {

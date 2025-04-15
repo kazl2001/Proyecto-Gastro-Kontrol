@@ -1,27 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXTableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.customer.delete.CustomerDeleteController">
 
+   <!-- BACKGROUND IMAGE -->
+   <ImageView fx:id="backgroundImage" fitHeight="1080.0" fitWidth="1920.0" layoutX="0.0" layoutY="0.0" preserveRatio="false" />
 
-   <MFXTableView fx:id="customersDTableView" layoutX="24.0" layoutY="42.0" prefHeight="242.0" prefWidth="631.0" footerVisible="false"/>
-   <MFXButton layoutX="92.0" layoutY="316.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="28.0"
-              prefWidth="68.0" text="DELETE"/>
-   <MFXTableView fx:id="ordersDTableView" layoutX="247.0" layoutY="316.0" prefHeight="208.0" prefWidth="408.0" footerVisible="false"/>
-   <Text layoutX="553.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CUSTOMERS">
-      <font>
-         <Font size="18.0"/>
-      </font>
-   </Text>
-   <Text layoutX="588.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDERS">
-      <font>
-         <Font size="18.0"/>
-      </font>
-   </Text>
+   <!-- MAIN CONTAINER -->
+   <VBox layoutX="100.0" layoutY="100.0" spacing="30.0" alignment="CENTER">
+      <children>
+         <!-- HBOX FOR TABLES -->
+         <HBox spacing="50.0" alignment="CENTER">
+            <children>
+               <!-- CUSTOMERS TABLE (LEFT) -->
+               <VBox spacing="20.0" alignment="CENTER">
+                  <children>
+                     <Text text="CUSTOMERS" fill="WHITE" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);">
+                        <font>
+                           <Font size="28.0"/>
+                        </font>
+                     </Text>
+                     <MFXTableView fx:id="customersDTableView" prefHeight="700.0" prefWidth="900.0" footerVisible="false" style="-fx-font-style:'bold';-fx-font-size: 15px;"/>
+                  </children>
+               </VBox>
+
+               <!-- ORDERS TABLE (RIGHT) -->
+               <VBox spacing="20.0" alignment="CENTER">
+                  <children>
+                     <Text text="ORDERS" fill="WHITE" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);" >
+                        <font>
+                           <Font size="28.0"/>
+                        </font>
+                     </Text>
+                     <MFXTableView fx:id="ordersDTableView" prefHeight="700.0" prefWidth="800.0" footerVisible="false" style="-fx-font-style:'bold';-fx-font-size: 15px;"/>
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+
+         <!-- DELETE BUTTON -->
+         <MFXButton fx:id="deleteCustomerButton" mnemonicParsing="false" onAction="#deleteCustomer"
+                    prefHeight="80.0" prefWidth="400.0" rippleColor="WHITE" text="DELETE"
+                    layoutX="250.0"
+                    style="-fx-font-size: 24px; -fx-background-color: #f68080; -fx-text-fill: white;"/>
+
+      </children>
+   </VBox>
+
 </AnchorPane>

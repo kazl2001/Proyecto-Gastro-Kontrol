@@ -43,7 +43,15 @@ public class Constants {
     public static final String PASSWORD_IMAGE = "/media/padlock.png";
 
     public static final String WELCOME_BACKGROUND_IMAGE = "/media/background_w.png";
-    public static final String B_IMAGE = "";
-    public static final String C_IMAGE = "";
+    public static final String LIST_CUSTOMER_BACKGROUND_IMAGE = "/media/background_lc.png";
+    public static final String ADD_CUSTOMER_BACKGROUND_IMAGE = "/media/background_ac.png";
+    public static final String UPDATE_CUSTOMER_BACKGROUND_IMAGE = "/media/background_uc.png";
+    public static final String DELETE_CUSTOMER_BACKGROUND_IMAGE = "/media/background_dc.png";
+
+
+    public static final String LIST_ORDER_BACKGROUND_IMAGE = "/media/background_lo.png";
+    public static final String ADD_ORDER_BACKGROUND_IMAGE = "/media/background_ao.png";
+    public static final String UPDATE_ORDER_BACKGROUND_IMAGE = "/media/background_uo.png";
+    public static final String DELETE_ORDER_BACKGROUND_IMAGE = "/media/background_do.png";
 
 }
