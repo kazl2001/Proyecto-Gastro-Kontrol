@@ -1,11 +1,14 @@
 package ui.screens.order.list;
 
+import common.constants.Constants;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import model.Customer;
 import model.Order;
@@ -27,6 +30,8 @@ public class OrderListController extends BaseScreenController implements Initial
     private MFXComboBox<Customer> customerNameComboBox;
     @FXML
     private MFXTableView<Order> ordersLTableView;
+    @FXML
+    private ImageView backgroundImage;
     private Order selectedOrder;
     private final OrderListViewModel vm;
 
@@ -45,6 +50,11 @@ public class OrderListController extends BaseScreenController implements Initial
         getPrincipalController().createOrdersTable(ordersLTableView);
         getPrincipalController().createOrderItemsTable(orderItemsLTableView);
         vm.getCustomerList();
+
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.LIST_ORDER_BACKGROUND_IMAGE)));
+        ordersLTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
+        orderItemsLTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
 
         ordersLTableView.getSelectionModel().selectionProperty().addListener((observableValue, order, orderNew) -> {
             if (ordersLTableView.getSelectionModel().getSelectedValues().get(0) != null) {

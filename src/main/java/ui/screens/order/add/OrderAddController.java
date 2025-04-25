@@ -1,5 +1,6 @@
 package ui.screens.order.add;
 
+import common.constants.Constants;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import jakarta.inject.Inject;
@@ -7,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.*;
 import ui.screens.common.BaseScreenController;
 import ui.screens.common.ScreenConstants;
@@ -29,6 +32,8 @@ public class OrderAddController extends BaseScreenController implements Initiali
     private MFXComboBox<MenuItem> orderAMenuItemComboBox;
     @FXML
     private MFXTableView<OrderItem> orderItemsATableView;
+    @FXML
+    private ImageView backgroundImage;
     private final OrderAddViewModel vm;
 
 
@@ -51,6 +56,10 @@ public class OrderAddController extends BaseScreenController implements Initiali
         initializeCustomerCB();
         initializeTableCB();
         initializeMenuItemCB();
+
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.ADD_ORDER_BACKGROUND_IMAGE)));
+        orderItemsATableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
 
         if (!getPrincipalController().isAdmin()) {
             orderACustomerComboBox.setDisable(true);

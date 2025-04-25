@@ -1,5 +1,6 @@
 package ui.screens.order.update;
 
+import common.constants.Constants;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableView;
@@ -9,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.*;
 import ui.screens.common.BaseScreenController;
 import ui.screens.common.ScreenConstants;
@@ -41,6 +44,9 @@ public class OrderUpdateController extends BaseScreenController implements Initi
     private MFXComboBox<MenuItem> menuItemUComboBox;
     @FXML
     private MFXTableView<OrderItem> orderItemsUTableView;
+    @FXML
+    private ImageView backgroundImage;
+
     private Order selectedOrder;
     private List<Table> tablesList;
     private final OrderUpdateViewModel vm;
@@ -75,6 +81,11 @@ public class OrderUpdateController extends BaseScreenController implements Initi
             vm.getOrderListByCustomerId(getPrincipalController().getCustomerId());
             customerUComboBox.setDisable(true);
         }
+
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.UPDATE_ORDER_BACKGROUND_IMAGE)));
+        orderUTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
+        orderItemsUTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
 
         //Upon selection, this method will populate the date field with the selected order's date
         orderUTableView.getSelectionModel().selectionProperty().addListener((observableValue, order, orderNew) -> {
