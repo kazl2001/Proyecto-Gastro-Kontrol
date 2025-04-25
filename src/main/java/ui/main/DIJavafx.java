@@ -22,7 +22,7 @@ public class DIJavafx extends Application {
         primaryStage.setMinWidth(1920);
         primaryStage.setMinHeight(1080);
         primaryStage.setResizable(false); // Resize the window
-        primaryStage.setMaximized(true);// Maximize the window when you start it
+        primaryStage.setMaximized(true); // Maximize the window when you start it
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(Constants.LOGO_IMAGE))); // Logo Image load
 
         container.getBeanManager().getEvent().select(new AnnotationLiteral<StartupScene>() {
