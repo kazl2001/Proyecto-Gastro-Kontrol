@@ -19,10 +19,10 @@
    <!-- BACKGROUND IMAGE -->
    <ImageView fx:id="backgroundImage" fitHeight="1080.0" fitWidth="1920.0" layoutX="0.0" layoutY="0.0" preserveRatio="false" />
 
-   <!-- CONTENEDOR PRINCIPAL: Divide la pantalla en dos columnas -->
+   <!-- MAIN CONTAINER -->
    <HBox layoutX="50.0" layoutY="50.0" spacing="50.0" prefWidth="1820.0" prefHeight="980.0">
 
-      <!-- COLUMNA IZQUIERDA: Tabla de ORDERS -->
+      <!-- ORDERS TABLE -->
       <VBox spacing="20.0" alignment="CENTER">
          <Text text="ORDERS"
                fill="WHITE"
@@ -33,19 +33,18 @@
                        style="-fx-font-size: 15px;" />
       </VBox>
 
-      <!-- COLUMNA DERECHA: Sección de detalles y de ORDER ITEMS -->
+      <!-- Details and ORDER ITEMS -->
       <VBox spacing="30.0" alignment="TOP_LEFT">
-         <!-- Aplicamos un margen superior aumentado para mover la columna hacia abajo -->
          <HBox.margin>
             <Insets top="160.0" right="0.0" bottom="0.0" left="0.0"/>
          </HBox.margin>
 
-         <!-- SECCIÓN DE DETALLES DE LA ORDEN -->
+         <!-- ORDER DETAILS -->
          <VBox spacing="15.0" alignment="CENTER_LEFT">
             <Text text="ORDER DETAILS"
                   fill="WHITE"
                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);" />
-            <!-- Fila: Fecha y horas -->
+            <!-- Row: Date and Days -->
             <HBox spacing="15.0" alignment="CENTER_LEFT">
                <MFXDatePicker fx:id="orderDateUDatePicker"
                               prefHeight="50.0" prefWidth="200.0"
@@ -67,7 +66,7 @@
                                 prefHeight="50.0" prefWidth="60.0" />
                </HBox>
             </HBox>
-            <!-- Fila: Customer y Table -->
+            <!-- Row: Customer and Table -->
             <HBox spacing="15.0" alignment="CENTER_LEFT">
                <Text text="Customer" fill="WHITE" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
                <MFXComboBox fx:id="customerUComboBox"
@@ -80,12 +79,12 @@
             </HBox>
          </VBox>
 
-         <!-- SECCIÓN DE ORDER ITEMS -->
+         <!-- ORDER ITEMS -->
          <VBox spacing="15.0" alignment="CENTER_LEFT">
             <Text text="ORDER ITEMS"
                   fill="WHITE"
                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);" />
-            <!-- Fila para agregar item: Menu Item, Quantity y botones ADD/REMOVE -->
+            <!-- Row for items: Menu Item, Quantity and ADD/REMOVE -->
             <HBox spacing="15.0" alignment="CENTER_LEFT">
                <MFXComboBox fx:id="menuItemUComboBox"
                             prefHeight="50.0" prefWidth="250.0"
@@ -102,14 +101,14 @@
                           prefHeight="50.0" prefWidth="100.0"
                           style="-fx-font-size: 18px; -fx-background-color: #f68080; -fx-text-fill: white;" />
             </HBox>
-            <!-- Tabla de ORDER ITEMS -->
+            <!-- ORDER ITEMS TABLE -->
             <MFXTableView fx:id="orderItemsUTableView"
                           prefHeight="300.0" prefWidth="700.0"
                           footerVisible="false"
                           style="-fx-font-size: 15px;" />
          </VBox>
 
-         <!-- BOTÓN DE MODIFICAR ORDEN -->
+         <!-- BUTTON UPDATE ORDEN -->
          <MFXButton fx:id="updateOrderButton" text="MODIFY ORDER"
                     mnemonicParsing="false" onAction="#updateOrder"
                     prefHeight="60.0" prefWidth="300.0"

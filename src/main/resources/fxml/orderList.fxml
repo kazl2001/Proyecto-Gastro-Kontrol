@@ -19,7 +19,7 @@
    <!-- BACKGROUND IMAGE -->
    <ImageView fx:id="backgroundImage" fitHeight="1080.0" fitWidth="1920.0" layoutX="0.0" layoutY="0.0" preserveRatio="false" />
 
-   <!-- MAIN HBOX: Two columns (Left: ORDERS, Right: Filters + ORDER-ITEMS + Total) -->
+   <!-- MAIN HBOX: Two columns -->
    <HBox layoutX="50.0" layoutY="50.0" spacing="50.0" prefWidth="1820.0" prefHeight="980.0">
 
       <!-- LEFT COLUMN: ORDERS TABLE -->
@@ -30,7 +30,7 @@
                        style="-fx-font-size: 15px;" />
       </VBox>
 
-      <!-- RIGHT COLUMN: Filters on top, then Order Items table, then Total Amount -->
+      <!-- RIGHT COLUMN -->
       <VBox spacing="20.0" alignment="CENTER">
 
          <!-- FILTER CONTROLS -->
@@ -52,7 +52,7 @@
                        prefHeight="50.0" prefWidth="300.0" onAction="#clearFilters" />
          </HBox>
 
-         <!-- ORDER-ITEMS TABLE SECTION (Smaller and placed below the filters) -->
+         <!-- ORDER-ITEMS TABLE SECTION -->
          <VBox spacing="10.0" alignment="CENTER">
             <Text text="ORDER-ITEMS" fill="WHITE"
                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);" />
