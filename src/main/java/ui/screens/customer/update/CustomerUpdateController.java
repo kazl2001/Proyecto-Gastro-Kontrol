@@ -56,7 +56,7 @@ public class CustomerUpdateController extends BaseScreenController implements In
         getPrincipalController().createCustomersTable(customersUTableView);
         // Load the background image
         backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.UPDATE_CUSTOMER_BACKGROUND_IMAGE)));
-        customersUTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
+        customersUTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Size for the table view
 
         //Upon selection, this method will populate the fields with the selected customer's data
         customersUTableView.getSelectionModel().selectionProperty().addListener((observableValue, customer, customerNew) -> {
