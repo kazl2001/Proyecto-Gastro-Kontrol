@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orders>
+    <order>
+        <id>7</id>
+        <order_item>
+            <menuItem>Pizza</menuItem>
+            <quantity>5</quantity>
+        </order_item>
+        <order_item>
+            <menuItem>Ice Cream</menuItem>
+            <quantity>5</quantity>
+        </order_item>
+    </order>
+    <order>
+        <id>8</id>
+        <order_item>
+            <menuItem>Pizza</menuItem>
+            <quantity>3</quantity>
+        </order_item>
+        <order_item>
+            <menuItem>Salad</menuItem>
+            <quantity>3</quantity>
+        </order_item>
+        <order_item>
+            <menuItem>Pasta</menuItem>
+            <quantity>3</quantity>
+        </order_item>
+    </order>
+    <order>
+        <id>9</id>
+        <order_item>
+            <menuItem>Pizza</menuItem>
+            <quantity>7</quantity>
+        </order_item>
+        <order_item>
+            <menuItem>Hamburger</menuItem>
+            <quantity>7</quantity>
+        </order_item>
+    </order>
+</orders>

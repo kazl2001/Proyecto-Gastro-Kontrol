@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orders>
+    <order>
+        <id>17</id>
+        <order_item>
+            <menuItem>Hamburger</menuItem>
+            <quantity>1</quantity>
+        </order_item>
+    </order>
+    <order>
+        <id>18</id>
+        <order_item>
+            <menuItem>Salad</menuItem>
+            <quantity>10</quantity>
+        </order_item>
+    </order>
+</orders>
