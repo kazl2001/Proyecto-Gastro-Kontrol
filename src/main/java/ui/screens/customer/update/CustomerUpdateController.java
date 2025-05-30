@@ -1,6 +1,7 @@
 package ui.screens.customer.update;
 
 import common.constants.Constants;
+import common.constants.ErrorConstants;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -148,6 +149,12 @@ public class CustomerUpdateController extends BaseScreenController implements In
 
     @FXML
     private void updateCustomer() {
+        // Check if the phone number is exactly 9 digits
+        if (phoneUTextField.getText().length() != 9 || !phoneUTextField.getText().matches("\\d+")) {
+            // Show error message if phone number is invalid
+            getPrincipalController().showErrorAlert(ErrorConstants.ERROR_SAVING_PHONE);
+            return;
+        }
         Optional<Customer> customerOptional = getCustomerFromScreen();
         if (customerOptional.isPresent() ) {
             customerOptional.get().setId(selectedCustomer.getId());

@@ -54,4 +54,8 @@ public class Constants {
     public static final String UPDATE_ORDER_BACKGROUND_IMAGE = "/media/background_uo.png";
     public static final String DELETE_ORDER_BACKGROUND_IMAGE = "/media/background_do.png";
 
+    //LINKS
+
+    public static final String LINKFYP ="https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DAndroid";
+
 }

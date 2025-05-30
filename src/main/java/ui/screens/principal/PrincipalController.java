@@ -114,7 +114,7 @@ public class PrincipalController {
         Platform.exit();
     }
 
-    //ALERTS
+    //ALERTS BOX
 
     public void showErrorAlert(String message) {
         alert.setAlertType(Alert.AlertType.ERROR);
@@ -217,27 +217,41 @@ public class PrincipalController {
     public void createOrderItemsTable(MFXTableView<OrderItem> table) {
         table.getSelectionModel().setAllowsMultipleSelection(false);
 
+        // Define table columns
         MFXTableColumn<OrderItem> menuItemCol = new MFXTableColumn<>(ScreenConstants.TABLE_COLUMN_MENU_ITEM);
         MFXTableColumn<OrderItem> quantityCol = new MFXTableColumn<>(ScreenConstants.TABLE_COLUMN_QUANTITY);
+        MFXTableColumn<OrderItem> priceCol = new MFXTableColumn<>(ScreenConstants.TABLE_COLUMN_PRICE);
+
         menuItemCol.setPrefWidth(200);
 
+        // Assignment of RowCellFactory
         menuItemCol.setRowCellFactory(orderItem -> new MFXTableRowCell<>(OrderItem::getMenuItem));
         quantityCol.setRowCellFactory(orderItem -> new MFXTableRowCell<>(OrderItem::getQuantity));
+        priceCol.setRowCellFactory(orderItem -> new MFXTableRowCell<>(oi -> oi.getMenuItem().getPrice()));
 
-        table.getTableColumns().addAll(menuItemCol, quantityCol);
+        // Add columns to table
+        table.getTableColumns().addAll(menuItemCol, quantityCol, priceCol);
     }
 
     public void createOrdersTable(MFXTableView<Order> table) {
         table.getSelectionModel().setAllowsMultipleSelection(false);
 
+        // Define table columns
+        MFXTableColumn<Order> idCol = new MFXTableColumn<>(ScreenConstants.TABLE_COLUMN_ID);
         MFXTableColumn<Order> tableCol = new MFXTableColumn<>(ScreenConstants.TABLE_COLUMN_TABLE);
         MFXTableColumn<Order> dateCol = new MFXTableColumn<>(ScreenConstants.TABLE_COLUMN_DATE);
+
         dateCol.setPrefWidth(150);
 
+        // Assignment of RowCellFactory
+        idCol.setRowCellFactory(order -> new MFXTableRowCell<>(Order::getId));
         tableCol.setRowCellFactory(order -> new MFXTableRowCell<>(Order::getTableId));
         dateCol.setRowCellFactory(order -> new MFXTableRowCell<>(Order::getOrderDate));
 
-        table.getTableColumns().addAll(tableCol, dateCol);
+        // Add columns to table
+        table.getTableColumns().addAll(idCol, tableCol, dateCol);
     }
+
+
 
 }

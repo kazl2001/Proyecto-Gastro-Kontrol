@@ -23,4 +23,6 @@ public class WelcomeController extends BaseScreenController {
         backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.WELCOME_BACKGROUND_IMAGE)));
 
     }
+
+
 }

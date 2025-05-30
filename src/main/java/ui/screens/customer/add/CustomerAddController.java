@@ -1,6 +1,7 @@
 package ui.screens.customer.add;
 
 import common.constants.Constants;
+import common.constants.ErrorConstants;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -99,7 +100,7 @@ public class CustomerAddController extends BaseScreenController implements Initi
     }
 
     private String getCustomerPhone() {
-        if (phoneATextField.getText().isEmpty() || phoneATextField.getText() == null || phoneATextField.getText().isBlank()) {
+        if (phoneATextField.getText().isEmpty() || phoneATextField.getText() == null || phoneATextField.getText().isBlank() || phoneATextField.getText().length() != 9) {
             return "";
         } else return phoneATextField.getText();
     }
@@ -120,6 +121,12 @@ public class CustomerAddController extends BaseScreenController implements Initi
 
     @FXML
     private void addCustomer() {
+        // Check if the phone number is exactly 9 digits
+        if (phoneATextField.getText().length() != 9 || !phoneATextField.getText().matches("\\d+")) {
+            // Show error message if phone number is invalid
+            getPrincipalController().showErrorAlert(ErrorConstants.ERROR_SAVING_PHONE);
+            return;
+        }
         Optional<Customer> customerOptional = getCustomerFromScreen();
         Optional<Credential> credentialOptional = getCredentialFromScreen();
         if (customerOptional.isPresent() && credentialOptional.isPresent()) {
@@ -129,5 +136,6 @@ public class CustomerAddController extends BaseScreenController implements Initi
             clearFields();
         }
     }
+
 
 }

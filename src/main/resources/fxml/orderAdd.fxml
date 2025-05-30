@@ -82,11 +82,24 @@
         </HBox>
 
         <!-- ADD ORDER button -->
-        <HBox alignment="CENTER">
+        <HBox spacing="50.0" alignment="CENTER">
             <MFXButton fx:id="addOrderButton" text="ADD ORDER" onAction="#addOrder"
                        mnemonicParsing="false" prefWidth="300.0" prefHeight="60.0"
                        style="-fx-font-size: 20px; -fx-background-color: #9cbcff; -fx-text-fill: white;" />
+
+            <!-- TOTAL AMOUNT -->
+            <VBox spacing="10.0" alignment="CENTER_LEFT">
+                <Text text="Total Amount" fill="WHITE"
+                      style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                <HBox spacing="5.0" alignment="CENTER_LEFT">
+                    <Text fx:id="amountText" text="0" fill="RED"
+                          style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                    <Text text="€" fill="RED"
+                          style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                </HBox>
+            </VBox>
         </HBox>
+
 
     </VBox>
 </AnchorPane>

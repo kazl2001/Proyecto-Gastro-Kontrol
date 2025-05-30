@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import model.*;
 import ui.screens.common.BaseScreenController;
 import ui.screens.common.ScreenConstants;
@@ -25,6 +26,8 @@ public class OrderAddController extends BaseScreenController implements Initiali
     @FXML
     private MFXComboBox<Customer> orderACustomerComboBox;
     @FXML
+    private Text amountText;
+    @FXML
     private MFXComboBox<Table> orderATableComboBox;
     @FXML
     private MFXComboBox<Integer> orderAQuantityComboBox;
@@ -34,8 +37,8 @@ public class OrderAddController extends BaseScreenController implements Initiali
     private MFXTableView<OrderItem> orderItemsATableView;
     @FXML
     private ImageView backgroundImage;
-    private final OrderAddViewModel vm;
 
+    private final OrderAddViewModel vm;
 
     @Inject
     public OrderAddController(OrderAddViewModel vm) {
@@ -51,20 +54,22 @@ public class OrderAddController extends BaseScreenController implements Initiali
     public void loadedPrincipal() {
         getPrincipalController().createOrderItemsTable(orderItemsATableView);
 
-        //ComboBox initialization
+        // ComboBox initialization
         initializeQuantityCB();
         initializeCustomerCB();
         initializeTableCB();
         initializeMenuItemCB();
 
-        // Load the background image
+        // Load background image
         backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.ADD_ORDER_BACKGROUND_IMAGE)));
-        orderItemsATableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
+        orderItemsATableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0));
 
         if (!getPrincipalController().isAdmin()) {
             orderACustomerComboBox.setDisable(true);
         }
 
+        // Set the total to 0€
+        updateTotalAmount();
     }
 
     private void initializeQuantityCB() {
@@ -75,9 +80,7 @@ public class OrderAddController extends BaseScreenController implements Initiali
     private void initializeTableCB() {
         vm.loadTableList();
         List<Table> tables = vm.getState().get().getTableList();
-
-        ObservableList<Table> observableTables = FXCollections.observableList(tables);
-        orderATableComboBox.setItems(observableTables);
+        orderATableComboBox.setItems(FXCollections.observableList(tables));
     }
 
     private void initializeCustomerCB() {
@@ -96,27 +99,26 @@ public class OrderAddController extends BaseScreenController implements Initiali
     private void addOrder() {
         Order newOrder;
         boolean fieldsMissing;
+
         if (getPrincipalController().isAdmin()) {
-            fieldsMissing = orderACustomerComboBox.getSelectedItem() == null || orderATableComboBox.getSelectedItem() == null || orderItemsATableView.getItems().isEmpty();
+            fieldsMissing = orderACustomerComboBox.getSelectedItem() == null ||
+                    orderATableComboBox.getSelectedItem() == null ||
+                    orderItemsATableView.getItems().isEmpty();
         } else {
-            fieldsMissing = orderATableComboBox.getSelectedItem() == null || orderItemsATableView.getItems().isEmpty();
+            fieldsMissing = orderATableComboBox.getSelectedItem() == null ||
+                    orderItemsATableView.getItems().isEmpty();
         }
+
         if (fieldsMissing) {
             getPrincipalController().showErrorAlert(ScreenConstants.MISSING_FIELDS + ScreenConstants.ORDER_NOT_ADDED);
         } else {
-            LocalDateTime now = LocalDateTime.now();
-
-            now = now.withNano(0);
-
+            LocalDateTime now = LocalDateTime.now().withNano(0);
             newOrder = new Order(orderATableComboBox.getSelectedItem().getId(), getPrincipalController().getCustomerId(), now);
-            if (orderItemsATableView.getItems().isEmpty()) {
-                getPrincipalController().showErrorAlert(ScreenConstants.MISSING_FIELDS + ScreenConstants.ORDER_NOT_ADDED);
-            } else {
-                newOrder.setOrderItems(orderItemsATableView.getItems());
-                vm.addOrder(newOrder);
-                clearAllFields();
-                getPrincipalController().showInfoAlert(ScreenConstants.SUCCESSFUL_ACTION + ScreenConstants.ORDER_ADDED);
-            }
+            newOrder.setOrderItems(orderItemsATableView.getItems());
+
+            vm.addOrder(newOrder);
+            clearAllFields();
+            getPrincipalController().showInfoAlert(ScreenConstants.SUCCESSFUL_ACTION + ScreenConstants.ORDER_ADDED);
         }
     }
 
@@ -128,6 +130,7 @@ public class OrderAddController extends BaseScreenController implements Initiali
         orderAQuantityComboBox.getSelectionModel().clearSelection();
         orderAMenuItemComboBox.getSelectionModel().clearSelection();
         orderItemsATableView.getItems().clear();
+        updateTotalAmount(); // Reset the total amount
     }
 
     @FXML
@@ -136,12 +139,15 @@ public class OrderAddController extends BaseScreenController implements Initiali
             getPrincipalController().showErrorAlert(ScreenConstants.MISSING_FIELDS + ScreenConstants.ORDER_ITEM_NOT_ADDED);
         } else {
             MenuItem menuItem = orderAMenuItemComboBox.getSelectedItem();
-            OrderItem newOrderItem = new OrderItem(0, menuItem, orderAQuantityComboBox.getSelectedItem());
+            int quantity = orderAQuantityComboBox.getSelectedItem();
 
+            OrderItem newOrderItem = new OrderItem(0, menuItem, quantity);
             orderItemsATableView.getItems().add(newOrderItem);
 
             orderAMenuItemComboBox.getSelectionModel().clearSelection();
             orderAQuantityComboBox.getSelectionModel().clearSelection();
+
+            updateTotalAmount(); // Update the total amount
         }
     }
 
@@ -154,8 +160,16 @@ public class OrderAddController extends BaseScreenController implements Initiali
             orderItems.removeAll(selectedOrderItems);
             orderItemsATableView.setItems(FXCollections.observableArrayList(orderItems));
 
+            updateTotalAmount(); // Update the total amount
         } else {
             getPrincipalController().showInfoAlert(ScreenConstants.ACTION_NOT_COMPLETED + ScreenConstants.EMPTY_TABLE);
         }
+    }
+
+    private void updateTotalAmount() {
+        double total = orderItemsATableView.getItems().stream()
+                .mapToDouble(item -> item.getMenuItem().getPrice() * item.getQuantity())
+                .sum();
+        amountText.setText(String.format("%.2f", total));
     }
 }

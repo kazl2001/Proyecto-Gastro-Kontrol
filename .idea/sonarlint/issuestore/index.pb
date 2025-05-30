@@ -290,3 +290,15 @@ X
 (src/main/resources/fxml/orderUpdate.fxml,2\d\2d516e03c7685083afa8ce81f540cf59e63bb986
 U
 %src/main/resources/fxml/orderAdd.fxml,2\a\2ad1db83af9ff9d82a38685bda28c7320dbb291f
+K
+data/Orders-customer-13.xml,2\b\2bbdbf3180e41c3bdcf81b5605570fb4d680e929
+X
+(src/main/resources/fxml/orderDelete.fxml,f\5\f577ede72c420dda10f5f6857f8a642cb3e03a25
+K
+data/Orders-customer-20.xml,0\3\036f24c3e1bb8c84c1796ae44c7984090ee99a99
+K
+data/Orders-customer-21.xml,7\0\706f128c0f14a8b41c6626e521a3eb300a84b0b4
+e
+5src/main/java/dao/impl/jdbc_spring/PasswordUtils.java,a\5\a51fccd97d6f907fb0388f7c29ebb9a104ff1fb2
+f
+6src/main/java/dao/impl/jdbc_spring/PasswordHasher.java,d\8\d87bf8c53e9ec157b5499f62483d3c1f303578bb

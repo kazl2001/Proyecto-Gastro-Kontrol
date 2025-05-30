@@ -50,6 +50,12 @@ public class LoginController extends BaseScreenController {
                     event.consume(); // Disallows the Ctrl + C
                 }
             });
+            // ENTER key triggers to login
+            passField.setOnKeyPressed(event -> {
+                if (event.getCode() == javafx.scene.input.KeyCode.ENTER) {
+                    login();
+                }
+            });
         } catch (Exception ex) {
             System.err.println(ErrorConstants.ERROR_LOADING_IMAGE + ex.getMessage());
         }
@@ -80,4 +86,15 @@ public class LoginController extends BaseScreenController {
             }
         });
     }
+
+    //FORGOT YOUR PASSWORD LINK
+    @FXML
+    private void openPasswordRecoveryLink() {
+        try {
+            java.awt.Desktop.getDesktop().browse(new java.net.URI(Constants.LINKFYP));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

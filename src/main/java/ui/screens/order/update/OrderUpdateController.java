@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import model.*;
 import ui.screens.common.BaseScreenController;
 import ui.screens.common.ScreenConstants;
@@ -23,7 +24,8 @@ import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
 public class OrderUpdateController extends BaseScreenController implements Initializable {
-
+    @FXML
+    private Text amountText;
     @FXML
     private MFXTextField orderUHourTextField;
     @FXML
@@ -145,6 +147,7 @@ public class OrderUpdateController extends BaseScreenController implements Initi
             if (orderUpdateStateNew.getOrderItemList() != null) {
                 orderItemsUTableView.getItems().clear();
                 orderItemsUTableView.getItems().addAll(orderUpdateStateNew.getOrderItemList());
+                updateTotalAmount();
             }
         });
     }
@@ -230,7 +233,12 @@ public class OrderUpdateController extends BaseScreenController implements Initi
         ObservableList<OrderItem> obv = orderItemsUTableView.getItems();
         return obv.size() == list.size() && IntStream.range(0, obv.size()).allMatch(i -> obv.get(i).equals(list.get(i)));
     }
-
+    private void updateTotalAmount() {
+        double total = orderItemsUTableView.getItems().stream()
+                .mapToDouble(item -> item.getMenuItem().getPrice() * item.getQuantity())
+                .sum();
+        amountText.setText(String.format("%.2f", total));
+    }
     @FXML
     private void updateOrder() {
         Optional<Order> orderOptional = getOrderFromScreen();

@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -25,25 +26,25 @@
     <center>
         <AnchorPane>
             <children>
-                <VBox layoutX="202.0" layoutY="282.0" prefHeight="625.0" prefWidth="908.0" spacing="20.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="431.0">
+                <VBox layoutX="150.0" layoutY="220.0" prefHeight="750.0" prefWidth="1100.0" spacing="30.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="431.0">
                     <children>
-                        <Text fill="#4782f8" text="User Login" textAlignment="CENTER" wrappingWidth="887.41259765625">
+                        <Text fill="#4782f8" text="User Login" textAlignment="CENTER" wrappingWidth="1000.0">
                             <font>
-                                <Font name="System Bold" size="96.0" />
+                                <Font name="System Bold" size="110.0" />
                             </font>
                         </Text>
 
                         <!-- USER FIELD -->
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                             <children>
-                                <ImageView fx:id="imageUser" fitHeight="54.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="imageUser" fitHeight="64.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                     <HBox.margin>
                                         <Insets left="150.0" />
                                     </HBox.margin>
                                 </ImageView>
-                                <MFXTextField fx:id="userField" borderGap="12.0" floatingText="Username" prefHeight="51.0" prefWidth="473.0" promptText="Write here">
+                                <MFXTextField fx:id="userField" borderGap="12.0" floatingText="Username" prefHeight="61.0" prefWidth="500.0" promptText="Write here">
                                     <font>
-                                        <Font size="13.0" />
+                                        <Font size="16.0" />
                                     </font>
                                 </MFXTextField>
                             </children>
@@ -52,35 +53,38 @@
                         <!-- PASSWORD FIELD -->
                         <HBox alignment="CENTER_LEFT" spacing="10.0">
                             <children>
-                                <ImageView fx:id="imagePassword" fitHeight="54.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                <ImageView fx:id="imagePassword" fitHeight="64.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
                                     <HBox.margin>
                                         <Insets left="150.0" />
                                     </HBox.margin>
                                 </ImageView>
-                                <MFXPasswordField allowCopy="false" fx:id="passField" borderGap="12.0" floatingText="Password" prefHeight="51.0" prefWidth="473.0" promptText="Write here">
+                                <MFXPasswordField fx:id="passField" allowCopy="false" borderGap="12.0" floatingText="Password" prefHeight="61.0" prefWidth="500.0" promptText="Write here">
                                     <font>
-                                        <Font size="13.0" />
+                                        <Font size="16.0" />
                                     </font>
                                 </MFXPasswordField>
                             </children>
                         </HBox>
 
                         <!-- LOGIN BUTTON -->
-                        <MFXButton mnemonicParsing="false" onAction="#login" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: #5890ff;" text="LOG IN" textFill="WHITE">
+                        <MFXButton buttonType="RAISED" mnemonicParsing="false" onAction="#login" prefHeight="90.0" prefWidth="180.0" style="-fx-background-color: #5890ff;" text="LOG IN" textFill="WHITE">
                             <VBox.margin>
                                 <Insets left="380.0" top="10.0" />
                             </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                         </MFXButton>
 
-                        <!-- FYP? TEXT -->
-                        <Text fill="#4782f8" text="Forgot your password?" textAlignment="CENTER">
+                        <!-- FYP? HYPERLINK -->
+                        <Hyperlink onAction="#openPasswordRecoveryLink" text="Forgot your password?" textFill="#4782f8">
                             <font>
-                                <Font size="21.0" />
+                                <Font size="20.0" />
                             </font>
                             <VBox.margin>
-                                <Insets left="210.0" top="20.0" />
+                                <Insets left="220.0" top="20.0" />
                             </VBox.margin>
-                        </Text>
+                        </Hyperlink>
                     </children>
                     <!-- ELEMENTS MARGINS -->
                     <padding>

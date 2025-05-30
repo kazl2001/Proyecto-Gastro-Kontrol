@@ -1,4 +1,5 @@
 
-^	java:S125Ú"<This block of commented-out lines of code should be removed.(«¥Ê¼ıÿÿÿÿ8¹â´şÛ2
-X
-java:S1144¢"5Remove this unused private "insertCredential" method.(éû¿€ùÿÿÿÿ8»â´şÛ2
+S
+java:S1874±"6Remove this use of "queryForObject"; it is deprecated.(ƒàá}8“œˆò2
+^	java:S125û"<This block of commented-out lines of code should be removed.(«¥Ê¼ıÿÿÿÿ8€¢˜ˆè2
+^	java:S125Ä"<This block of commented-out lines of code should be removed.(éû¿€ùÿÿÿÿ8€¢˜ˆè2

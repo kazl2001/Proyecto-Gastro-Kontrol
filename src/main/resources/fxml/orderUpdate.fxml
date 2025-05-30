@@ -44,7 +44,7 @@
             <Text text="ORDER DETAILS"
                   fill="WHITE"
                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);" />
-            <!-- Row: Date and Days -->
+            <!-- Row: Date and Hours -->
             <HBox spacing="15.0" alignment="CENTER_LEFT">
                <MFXDatePicker fx:id="orderDateUDatePicker"
                               prefHeight="50.0" prefWidth="200.0"
@@ -108,13 +108,26 @@
                           style="-fx-font-size: 15px;" />
          </VBox>
 
-         <!-- BUTTON UPDATE ORDEN -->
-         <MFXButton fx:id="updateOrderButton" text="MODIFY ORDER"
-                    mnemonicParsing="false" onAction="#updateOrder"
-                    prefHeight="60.0" prefWidth="300.0"
-                    style="-fx-font-size: 20px; -fx-background-color: #9cbcff; -fx-text-fill: white;" />
+         <!-- BUTTON MODIFY ORDER + TOTAL AMOUNT -->
+         <HBox spacing="50.0" alignment="CENTER_LEFT">
+            <MFXButton fx:id="updateOrderButton" text="MODIFY ORDER"
+                       mnemonicParsing="false" onAction="#updateOrder"
+                       prefHeight="60.0" prefWidth="300.0"
+                       style="-fx-font-size: 20px; -fx-background-color: #9cbcff; -fx-text-fill: white;" />
+
+            <!-- TOTAL AMOUNT -->
+            <VBox spacing="10.0" alignment="CENTER_LEFT">
+               <Text text="Total Amount" fill="WHITE"
+                     style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+               <HBox spacing="5.0" alignment="CENTER_LEFT">
+                  <Text fx:id="amountText" text="0" fill="RED"
+                        style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                  <Text text="€" fill="RED"
+                        style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+               </HBox>
+            </VBox>
+         </HBox>
+
       </VBox>
-
    </HBox>
-
 </AnchorPane>

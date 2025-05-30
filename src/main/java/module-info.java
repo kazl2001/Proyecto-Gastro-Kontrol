@@ -17,6 +17,7 @@ module Multiscreen_Restaurant_Application {
     requires java.logging;
     requires java.sql;
     requires com.zaxxer.hikari;
+    requires jbcrypt;
 
 
     exports ui.main to javafx.graphics;

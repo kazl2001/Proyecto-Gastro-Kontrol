@@ -61,7 +61,6 @@ public class DaoCredentialsImpl implements DaoCredentials {
     @Override
     public Either<RestaurantError, Integer> save(Credential credential) {
 
-
         Either<RestaurantError, Integer> result;
 
         try (Connection con = pool.getConnection()) {
@@ -106,5 +105,34 @@ public class DaoCredentialsImpl implements DaoCredentials {
         }
         return listCredentials;
     }
+
+    @Override
+    public Either<RestaurantError, Credential> authenticate(String username, String plainPassword) {
+        try (Connection con = pool.getConnection()) {
+            pStmt = con.prepareStatement(QueryStrings.GET_CREDENTIAL_BY_USERNAME);
+            pStmt.setString(1, username);
+
+            rs = pStmt.executeQuery();
+            if (rs.next()) {
+                String hashedPassword = rs.getString(DbConstants.PASSWORD);
+                int customerId = rs.getInt(DbConstants.CUSTOMER_ID);
+
+                if (PasswordUtils.checkPassword(plainPassword, hashedPassword)) {
+                    // Incorrect Password
+                    return Either.right(new Credential(customerId, username, hashedPassword));
+                } else {
+                    // Correct Password
+                    return Either.left(new GeneralDatabaseError(011, ErrorConstants.INCORRECT_PASSWORD));
+                }
+            } else {
+                return Either.left(new GeneralDatabaseError(012, ErrorConstants.USER_NOT_FOUND));
+            }
+
+        } catch (SQLException e) {
+            log.error(e.getMessage(), e);
+            return Either.left(new GeneralDatabaseError(ErrorConstants.GENERAL_DATABASE_ERROR_CODE, ErrorConstants.GENERAL_DATABASE_ERROR));
+        }
+    }
+
 
 }
