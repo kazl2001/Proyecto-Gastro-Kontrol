@@ -25,47 +25,24 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Either<RestaurantError, Integer> login(String user, String pass) {
-        Either<RestaurantError, ArrayList<Credential>> credentialsResult = daoCredentials.getAll();
-
-        if (credentialsResult.isLeft()) {
-            return Either.left(credentialsResult.getLeft());
+        if (user == null || pass == null || user.isBlank() || pass.isBlank()) {
+            return Either.left(new RestaurantError(
+                    ErrorConstants.INVALID_ENTITY_DATA_ERROR_CODE,
+                    ErrorConstants.INVALID_ENTITY_DATA_ERROR
+            ));
         }
 
-        List<Credential> credentials = credentialsResult.get();
+        Either<RestaurantError, Credential> authResult = daoCredentials.authenticate(user, pass);
 
-        if (user == null || pass == null) {
-            return Either.left(new RestaurantError(ErrorConstants.INVALID_ENTITY_DATA_ERROR_CODE, ErrorConstants.INVALID_ENTITY_DATA_ERROR));
-        }
-
-        Optional<Credential> matchingCredential = credentials.stream()
-                .filter(credential -> credential.getUsername().equals(user) && credential.getPassword().equals(pass))
-                .findFirst();
-
-        if (matchingCredential.isPresent()) {
-            int id = matchingCredential.get().getId();
-            return Either.right(id);
-        } else {
-            return Either.left(new RestaurantError(ErrorConstants.INVALID_ENTITY_DATA_ERROR_CODE, ErrorConstants.INVALID_ENTITY_DATA_ERROR));
-        }
+        return authResult.map(Credential::getId);
     }
+
 
     @Override
     public boolean checkAdmin(String user, String pass) {
-        final String adminUser;
-        final String adminPass;
-        AtomicReference<String> userRef = new AtomicReference<>();
-        AtomicReference<String> passRef = new AtomicReference<>();
-
-        Credential c = new Credential(1); //el admin tiene el customer_id = 1
-
-        daoCredentials.get(c).peek(credential -> {
-            userRef.set(credential.getUsername());
-            passRef.set(credential.getPassword());
-        });
-
-        adminUser = userRef.get();
-        adminPass = passRef.get();
-
-        return user.equals(adminUser) && pass.equals(adminPass);
+        // ADMIN = id 1
+        Either<RestaurantError, Credential> authResult = daoCredentials.authenticate(user, pass);
+        return authResult.isRight() && authResult.get().getId() == 1;
     }
+
 }

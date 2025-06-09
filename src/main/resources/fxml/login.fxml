@@ -1,16 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.login.LoginController">
+<BorderPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.login.LoginController">
+    <!-- LEFT PANEL-->
+    <left>
+        <AnchorPane minWidth="450.0" style="-fx-background-color: #0598ff;">
+            <children>
+                <Text fill="WHITE" layoutX="65.0" layoutY="698.0" text="Gastro Kontrol" textAlignment="CENTER">
+                    <font>
+                        <Font size="50.0" />
+                    </font>
+                </Text>
+                <ImageView fx:id="logoApp" fitHeight="321.0" fitWidth="344.0" layoutX="53.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
+    </left>
 
+    <!-- CENTRAL PANEL -->
+    <center>
+        <AnchorPane>
+            <children>
+                <VBox layoutX="150.0" layoutY="220.0" prefHeight="750.0" prefWidth="1100.0" spacing="30.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="431.0">
+                    <children>
+                        <Text fill="#4782f8" text="User Login" textAlignment="CENTER" wrappingWidth="1000.0">
+                            <font>
+                                <Font name="System Bold" size="110.0" />
+                            </font>
+                        </Text>
 
-   <MFXTextField fx:id="userField" floatingText="User" layoutX="335.0" layoutY="205.0" prefHeight="60.0"
-                 prefWidth="128.0" promptText="Write here"/>
-   <MFXPasswordField fx:id="passField" floatingText="Password" layoutX="336.0" layoutY="275.0" prefHeight="60.0"
-                 prefWidth="128.0" promptText="Write here"/>
-   <MFXButton layoutX="358.0" layoutY="353.0" mnemonicParsing="false" onAction="#login" prefHeight="38.0"
-              prefWidth="84.0" text="LOG IN"/>
-</AnchorPane>
+                        <!-- USER FIELD -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <ImageView fx:id="imageUser" fitHeight="64.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="150.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <MFXTextField fx:id="userField" borderGap="12.0" floatingText="Username" prefHeight="61.0" prefWidth="500.0" promptText="Write here">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </MFXTextField>
+                            </children>
+                        </HBox>
+
+                        <!-- PASSWORD FIELD -->
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <ImageView fx:id="imagePassword" fitHeight="64.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                    <HBox.margin>
+                                        <Insets left="150.0" />
+                                    </HBox.margin>
+                                </ImageView>
+                                <MFXPasswordField fx:id="passField" allowCopy="false" borderGap="12.0" floatingText="Password" prefHeight="61.0" prefWidth="500.0" promptText="Write here">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </MFXPasswordField>
+                            </children>
+                        </HBox>
+
+                        <!-- LOGIN BUTTON -->
+                        <MFXButton buttonType="RAISED" mnemonicParsing="false" onAction="#login" prefHeight="90.0" prefWidth="180.0" style="-fx-background-color: #5890ff;" text="LOG IN" textFill="WHITE">
+                            <VBox.margin>
+                                <Insets left="380.0" top="10.0" />
+                            </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                        </MFXButton>
+
+                        <!-- FYP? HYPERLINK -->
+                        <Hyperlink onAction="#openPasswordRecoveryLink" text="Forgot your password?" textFill="#4782f8">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets left="220.0" top="20.0" />
+                            </VBox.margin>
+                        </Hyperlink>
+                    </children>
+                    <!-- ELEMENTS MARGINS -->
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

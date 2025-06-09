@@ -12,6 +12,7 @@ public class OrderItem {
     private MenuItem menuItem;
     private int menuItemId;
     private int quantity;
+    private double price;
 
     public OrderItem(int orderId, int menuItemId, int quantity) {
         this.id = 0;
@@ -32,6 +33,13 @@ public class OrderItem {
         this.orderId = orderId;
         this.menuItem = menuItem;
         this.quantity = quantity;
+    }
+    public OrderItem(int orderId, int menuItemId, int quantity,double price) {
+        this.id = 0;
+        this.orderId = orderId;
+        this.menuItemId = menuItemId;
+        this.quantity = quantity;
+        this.price=price;
     }
 
     public OrderItem(int orderId) {

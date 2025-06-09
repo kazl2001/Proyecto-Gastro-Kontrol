@@ -2,33 +2,40 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
+
 <BorderPane fx:id="root" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/11.0.14-internal"
+            xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ui.screens.principal.PrincipalController">
     <center>
     </center>
     <top>
-        <MenuBar fx:id="principalMenu">
-            <Menu mnemonicParsing="false" text="OPTIONS">
-                <MenuItem fx:id="menuItemLogout" mnemonicParsing="false" onAction="#menuClick" text="Logout"/>
-                <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#exit" text="Exit"/>
+        <MenuBar fx:id="principalMenu" style="-fx-background-color: linear-gradient(to right, #eaeffc, #9cbcff);">
+            <Menu mnemonicParsing="false" text="OPTIONS" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
+                <MenuItem fx:id="menuItemLogout" mnemonicParsing="false" onAction="#menuClick" text="Logout"
+                          style="-fx-text-fill: black; -fx-font-size: 14px;"/>
+                <MenuItem fx:id="menuItemExit" mnemonicParsing="false" onAction="#exit" text="Exit"
+                          style="-fx-text-fill: black; -fx-font-size: 14px;"/>
             </Menu>
-            <Menu  mnemonicParsing="false" text="CUSTOMERS">
+            <Menu mnemonicParsing="false" text="CUSTOMERS" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
                 <MenuItem fx:id="menuItemCustomerList" mnemonicParsing="false" onAction="#menuClick"
-                          text="List"/>
-                <MenuItem fx:id="menuItemCustomerAdd" mnemonicParsing="false" onAction="#menuClick" text="Add"/>
+                          text="List" style="-fx-text-fill: black; -fx-font-size: 14px;"/>
+                <MenuItem fx:id="menuItemCustomerAdd" mnemonicParsing="false" onAction="#menuClick" text="Add"
+                          style="-fx-text-fill: black; -fx-font-size: 14px;"/>
                 <MenuItem fx:id="menuItemCustomerUpdate" mnemonicParsing="false" onAction="#menuClick"
-                          text="Update"/>
+                          text="Update" style="-fx-text-fill: black; -fx-font-size: 14px;"/>
                 <MenuItem fx:id="menuItemCustomerDelete" mnemonicParsing="false" onAction="#menuClick"
-                          text="Delete"/>
-
+                          text="Delete" style="-fx-text-fill: black; -fx-font-size: 14px;"/>
             </Menu>
-            <Menu mnemonicParsing="false" text="ORDERS">
-                <MenuItem fx:id="menuItemOrderList" mnemonicParsing="false" onAction="#menuClick" text="List"/>
-                <MenuItem fx:id="menuItemOrderAdd" mnemonicParsing="false" onAction="#menuClick" text="Add"/>
-                <MenuItem fx:id="menuItemOrderUpdate" mnemonicParsing="false" onAction="#menuClick" text="Update"/>
-                <MenuItem fx:id="menuItemOrderDelete" mnemonicParsing="false" onAction="#menuClick" text="Delete"/>
-
+            <Menu mnemonicParsing="false" text="ORDERS" style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;">
+                <MenuItem fx:id="menuItemOrderList" mnemonicParsing="false" onAction="#menuClick" text="List"
+                          style="-fx-text-fill: black; -fx-font-size: 14px;"/>
+                <MenuItem fx:id="menuItemOrderAdd" mnemonicParsing="false" onAction="#menuClick" text="Add"
+                          style="-fx-text-fill: black; -fx-font-size: 14px;"/>
+                <MenuItem fx:id="menuItemOrderUpdate" mnemonicParsing="false" onAction="#menuClick" text="Update"
+                          style="-fx-text-fill: black; -fx-font-size: 14px;"/>
+                <MenuItem fx:id="menuItemOrderDelete" mnemonicParsing="false" onAction="#menuClick" text="Delete"
+                          style="-fx-text-fill: black; -fx-font-size: 14px;"/>
             </Menu>
         </MenuBar>
     </top>

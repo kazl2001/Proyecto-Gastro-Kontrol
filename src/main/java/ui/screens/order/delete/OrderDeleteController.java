@@ -1,9 +1,12 @@
 package ui.screens.order.delete;
 
+import common.constants.Constants;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import jakarta.inject.Inject;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Order;
 import model.OrderItem;
 import ui.screens.common.BaseScreenController;
@@ -18,6 +21,8 @@ public class OrderDeleteController extends BaseScreenController implements Initi
     private MFXTableView<Order> orderDTableView;
     @FXML
     private MFXTableView<OrderItem> orderItemsDTableView;
+    @FXML
+    private ImageView backgroundImage;
     private Order selectedOrder;
     private final OrderDeleteViewModel vm;
 
@@ -41,6 +46,11 @@ public class OrderDeleteController extends BaseScreenController implements Initi
 
         getPrincipalController().createOrdersTable(orderDTableView);
         getPrincipalController().createOrderItemsTable(orderItemsDTableView);
+
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.DELETE_ORDER_BACKGROUND_IMAGE)));
+        orderDTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
+        orderItemsDTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
 
         orderDTableView.getSelectionModel().selectionProperty().addListener((observableValue, customer, customerNew) -> {
             if (orderDTableView.getSelectionModel().getSelectedValues().get(0) != null) {

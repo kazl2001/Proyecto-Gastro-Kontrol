@@ -37,12 +37,12 @@ public class DbConstants {
     public static final String PASSWORD = "password";
 
     //TABLE NAMES
-
     public static final String CUSTOMERS_TABLE = "customers";
     public static final String ORDERS_TABLE = "orders";
     public static final String ORDER_ITEMS_TABLE = "order_items";
     public static final String MENU_ITEMS_TABLE = "menu_items";
     public static final String TABLES_TABLE = "restaurant_tables";
     public static final String CREDENTIALS_TABLE = "credentials";
+
 
 }

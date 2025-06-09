@@ -1,42 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.screens.order.list.OrderListController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0"
+            xmlns="http://javafx.com/javafx/11.0-internal"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.screens.order.list.OrderListController">
 
+   <!-- BACKGROUND IMAGE -->
+   <ImageView fx:id="backgroundImage" fitHeight="1080.0" fitWidth="1920.0" layoutX="0.0" layoutY="0.0" preserveRatio="false" />
 
-   <MFXTableView fx:id="ordersLTableView" layoutX="24.0" layoutY="42.0" prefHeight="414.0" prefWidth="381.0" footerVisible="false"/>
-   <MFXTableView fx:id="orderItemsLTableView" layoutX="413.0" layoutY="228.0" prefHeight="228.0" prefWidth="354.0" footerVisible="false"/>
-   <Text layoutX="24.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDERS">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <Text layoutX="413.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER-ITEMS">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <MFXComboBox fx:id="customerNameComboBox" layoutX="619.0" layoutY="42.0" prefHeight="40.0" prefWidth="147.0" promptText="Customer name" />
-   <Text layoutX="636.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Amount">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <Text fx:id="amountText" fill="RED" layoutX="677.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <Text fill="RED" layoutX="733.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Text>
-   <MFXDatePicker fx:id="ordersLDatePicker" layoutX="413.0" layoutY="43.0" promptText="Order Date" />
-   <MFXButton layoutX="413.0" layoutY="90.0" onAction="#filterByDate" text="FILTER" />
-   <MFXButton layoutX="713.0" layoutY="90.0" onAction="#filterByCustomer" text="FILTER" />
-   <MFXButton layoutX="24.0" layoutY="468.0" onAction="#clearFilters" text="CLEAR FILTERS" />
+   <!-- MAIN HBOX: Two columns -->
+   <HBox layoutX="50.0" layoutY="50.0" spacing="50.0" prefWidth="1820.0" prefHeight="980.0">
+
+      <!-- LEFT COLUMN: ORDERS TABLE -->
+      <VBox spacing="20.0" alignment="CENTER">
+         <Text text="ORDERS" fill="WHITE"
+               style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);" />
+         <MFXTableView fx:id="ordersLTableView" prefHeight="700.0" prefWidth="850.0" footerVisible="false"
+                       style="-fx-font-size: 15px;" />
+      </VBox>
+
+      <!-- RIGHT COLUMN -->
+      <VBox spacing="20.0" alignment="CENTER">
+
+         <!-- FILTER CONTROLS -->
+         <HBox spacing="20.0" alignment="CENTER">
+            <MFXDatePicker fx:id="ordersLDatePicker" prefHeight="50.0" prefWidth="300.0" promptText="Order Date" />
+            <MFXButton fx:id="filterByDateButton" text="FILTER BY DATE"
+                       style="-fx-font-size: 18px; -fx-background-color: #9cbcff; -fx-text-fill: white;"
+                       prefHeight="50.0" prefWidth="200.0" onAction="#filterByDate" />
+            <MFXComboBox fx:id="customerNameComboBox" prefHeight="50.0" prefWidth="300.0" promptText="Customer name" />
+            <MFXButton fx:id="filterByCustomerButton" text="FILTER BY CUSTOMER"
+                       style="-fx-font-size: 18px; -fx-background-color: #9cbcff; -fx-text-fill: white;"
+                       prefHeight="50.0" prefWidth="200.0" onAction="#filterByCustomer" />
+         </HBox>
+
+         <!-- CLEAR FILTERS BUTTON -->
+         <HBox alignment="CENTER">
+            <MFXButton fx:id="clearFiltersButton" text="CLEAR FILTERS"
+                       style="-fx-font-size: 18px; -fx-background-color: #ff5252; -fx-text-fill: white;"
+                       prefHeight="50.0" prefWidth="300.0" onAction="#clearFilters" />
+         </HBox>
+
+         <!-- ORDER-ITEMS TABLE SECTION -->
+         <VBox spacing="10.0" alignment="CENTER">
+            <Text text="ORDER-ITEMS" fill="WHITE"
+                  style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, black, 10, 0.5, 0, 0);" />
+            <MFXTableView fx:id="orderItemsLTableView" prefHeight="400.0" prefWidth="750.0" footerVisible="false"
+                          style="-fx-font-size: 15px;" />
+         </VBox>
+
+         <!-- TOTAL AMOUNT SECTION -->
+         <VBox spacing="10.0" alignment="CENTER">
+            <Text text="Total Amount" fill="WHITE"
+                  style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            <HBox spacing="5.0" alignment="CENTER">
+               <Text fx:id="amountText" text="0" fill="RED"
+                     style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+               <Text text="€" fill="RED"
+                     style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+            </HBox>
+         </VBox>
+      </VBox>
+   </HBox>
+
 </AnchorPane>

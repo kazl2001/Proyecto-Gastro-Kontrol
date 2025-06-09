@@ -1,5 +1,7 @@
 package ui.screens.customer.add;
 
+import common.constants.Constants;
+import common.constants.ErrorConstants;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -7,6 +9,8 @@ import jakarta.inject.Inject;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Credential;
 import model.Customer;
 import ui.screens.common.BaseScreenController;
@@ -35,6 +39,8 @@ public class CustomerAddController extends BaseScreenController implements Initi
     private MFXTextField phoneATextField;
     @FXML
     private MFXTableView<Customer> customersATableView;
+    @FXML
+    private ImageView backgroundImage;
 
     private final CustomerAddViewModel vm;
 
@@ -64,6 +70,9 @@ public class CustomerAddController extends BaseScreenController implements Initi
     public void loadedPrincipal() {
         vm.getCustomerList();
         getPrincipalController().createCustomersTable(customersATableView);
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.ADD_CUSTOMER_BACKGROUND_IMAGE)));
+        customersATableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
     }
 
     private Optional<Customer> getCustomerFromScreen() {
@@ -91,7 +100,7 @@ public class CustomerAddController extends BaseScreenController implements Initi
     }
 
     private String getCustomerPhone() {
-        if (phoneATextField.getText().isEmpty() || phoneATextField.getText() == null || phoneATextField.getText().isBlank()) {
+        if (phoneATextField.getText().isEmpty() || phoneATextField.getText() == null || phoneATextField.getText().isBlank() || phoneATextField.getText().length() != 9) {
             return "";
         } else return phoneATextField.getText();
     }
@@ -112,6 +121,12 @@ public class CustomerAddController extends BaseScreenController implements Initi
 
     @FXML
     private void addCustomer() {
+        // Check if the phone number is exactly 9 digits
+        if (phoneATextField.getText().length() != 9 || !phoneATextField.getText().matches("\\d+")) {
+            // Show error message if phone number is invalid
+            getPrincipalController().showErrorAlert(ErrorConstants.ERROR_SAVING_PHONE);
+            return;
+        }
         Optional<Customer> customerOptional = getCustomerFromScreen();
         Optional<Credential> credentialOptional = getCredentialFromScreen();
         if (customerOptional.isPresent() && credentialOptional.isPresent()) {
@@ -121,5 +136,6 @@ public class CustomerAddController extends BaseScreenController implements Initi
             clearFields();
         }
     }
+
 
 }

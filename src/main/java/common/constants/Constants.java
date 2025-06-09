@@ -37,4 +37,25 @@ public class Constants {
     //DAO XML
     public static final String TEXT_FORMAT = "Orders-customer-%s.xml";
 
+    //IMAGES CONSTANTS
+    public static final String LOGO_IMAGE = "/media/logo.png";
+    public static final String USER_IMAGE = "/media/user.png";
+    public static final String PASSWORD_IMAGE = "/media/padlock.png";
+
+    public static final String WELCOME_BACKGROUND_IMAGE = "/media/background_w.png";
+    public static final String LIST_CUSTOMER_BACKGROUND_IMAGE = "/media/background_lc.png";
+    public static final String ADD_CUSTOMER_BACKGROUND_IMAGE = "/media/background_ac.png";
+    public static final String UPDATE_CUSTOMER_BACKGROUND_IMAGE = "/media/background_uc.png";
+    public static final String DELETE_CUSTOMER_BACKGROUND_IMAGE = "/media/background_dc.png";
+
+
+    public static final String LIST_ORDER_BACKGROUND_IMAGE = "/media/background_lo.png";
+    public static final String ADD_ORDER_BACKGROUND_IMAGE = "/media/background_ao.png";
+    public static final String UPDATE_ORDER_BACKGROUND_IMAGE = "/media/background_uo.png";
+    public static final String DELETE_ORDER_BACKGROUND_IMAGE = "/media/background_do.png";
+
+    //LINKS
+
+    public static final String LINKFYP ="https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DAndroid";
+
 }

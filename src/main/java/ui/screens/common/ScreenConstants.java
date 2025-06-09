@@ -19,7 +19,7 @@ public class ScreenConstants {
     public static final String FXML_ROUTE_ORDER_DELETE_SCREEN = "/fxml/orderDelete.fxml";
 
     //WELCOME TXT AREA
-    public static final String EXCLAMATION_MARK = "!";
+    public static final String EXCLAMATION_MARK = " !";
 
     //ALERT ID'S
     public static final String ALERT_DIALOG_PANE_ID = "Alert";
@@ -70,6 +70,9 @@ public class ScreenConstants {
     public static final String TABLE_COLUMN_PHONE = "PHONE";
     public static final String TABLE_COLUMN_MENU_ITEM = "MENU ITEM";
     public static final String TABLE_COLUMN_QUANTITY = "QUANTITY";
+    public static final String TABLE_COLUMN_DESCRIPTION = "DESCRIPTION";
+    public static final String TABLE_COLUMN_PRICE = "PRICE";
     public static final String TABLE_COLUMN_TABLE = "TABLE";
+    public static final String TABLE_COLUMN_ID = "ID";
     public static final String TABLE_COLUMN_DATE = "DATE";
 }

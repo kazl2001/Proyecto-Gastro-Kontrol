@@ -1,10 +1,13 @@
 package ui.screens.customer.list;
 
+import common.constants.Constants;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import jakarta.inject.Inject;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Customer;
 import ui.screens.common.BaseScreenController;
 
@@ -15,6 +18,8 @@ public class CustomerListController extends BaseScreenController implements Init
 
     @FXML
     private MFXTableView<Customer> customersLTableView;
+    @FXML
+    private ImageView backgroundImage;
 
     private final CustomerListViewModel vm;
 
@@ -32,6 +37,10 @@ public class CustomerListController extends BaseScreenController implements Init
     public void loadedPrincipal() {
         vm.getCustomerList();
         getPrincipalController().createCustomersTable(customersLTableView);
+        // Load the background image
+        backgroundImage.setImage(new Image(getClass().getResourceAsStream(Constants.LIST_CUSTOMER_BACKGROUND_IMAGE)));
+        customersLTableView.getTableColumns().forEach(column -> column.setPrefWidth(200.0)); // Set a size for the table view
+
     }
 
     private void stateChangeCustomerList() {

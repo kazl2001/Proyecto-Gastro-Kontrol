@@ -13,4 +13,7 @@ public interface DaoCredentials {
 
     Either<RestaurantError, Integer> save(Credential credential);
 
+    Either<RestaurantError, Credential> authenticate(String username, String plainPassword);
+
+
 }

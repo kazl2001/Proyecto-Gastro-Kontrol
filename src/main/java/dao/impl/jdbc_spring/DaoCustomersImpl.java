@@ -7,7 +7,6 @@ import dao.connection.DBConnectionPool;
 import io.vavr.control.Either;
 import jakarta.inject.Inject;
 import lombok.extern.log4j.Log4j2;
-import model.Credential;
 import model.Customer;
 import model.error.RestaurantError;
 import model.error.customer.ConfirmationNeededError;
@@ -166,17 +165,32 @@ public class DaoCustomersImpl implements DaoCustomers {
     @Override
     public Either<RestaurantError, Integer> save(Customer newCustomer) {
         Customer customer = checkEmptyItemFields(newCustomer);
-        Either<RestaurantError, Integer> result;
 
         TransactionDefinition def = new DefaultTransactionDefinition();
         DataSourceTransactionManager transactionManager = new DataSourceTransactionManager(pool.getDataSource());
         TransactionStatus status = transactionManager.getTransaction(def);
 
         try {
-            // 1. Insertar en la tabla customers primero
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(pool.getDataSource());
+            String username = customer.getCredential().getUsername();
+
+            Integer count = jdbcTemplate.queryForObject(
+                    QueryStrings.CHECK_CREDENTIALS,
+                    new Object[]{ username },
+                    Integer.class
+            );
+            if (count != null && count > 0) {
+                transactionManager.rollback(status);
+                return Either.left(new QueryExecutionError(
+                        ErrorConstants.UNIQUE_FIELD_CONSTRAINT_ERROR_CODE,
+                        ErrorConstants.UNIQUE_FIELD_CONSTRAINT_ERROR
+                ));
+            }
+
+            // Insert into customers
             SimpleJdbcInsert customerInsert = new SimpleJdbcInsert(pool.getDataSource())
                     .withTableName(DbConstants.CUSTOMERS_TABLE)
-                    .usingGeneratedKeyColumns("id"); // se asume que la columna primaria es "id"
+                    .usingGeneratedKeyColumns(DbConstants.ID);
             Map<String, Object> customerParams = new HashMap<>();
             customerParams.put(DbConstants.FIRST_NAME, customer.getFirstName());
             customerParams.put(DbConstants.LAST_NAME, customer.getLastName());
@@ -187,33 +201,52 @@ public class DaoCustomersImpl implements DaoCustomers {
             } else {
                 customerParams.put(DbConstants.DATE_OF_BIRTH, null);
             }
-            // Obtener el id generado en customers
             int generatedCustomerId = customerInsert.executeAndReturnKey(customerParams).intValue();
 
-            // 2. Insertar en la tabla credentials usando el customer_id obtenido
+            // Hash the password
+            String plainPassword = customer.getCredential().getPassword();
+            String hashedPassword = PasswordUtils.hashPassword(plainPassword);
+
+            // Insert into credentials
             SimpleJdbcInsert credentialInsert = new SimpleJdbcInsert(pool.getDataSource())
                     .withTableName(DbConstants.CREDENTIALS_TABLE);
             Map<String, Object> credParams = new HashMap<>();
-            // Nota: La columna en la tabla credentials se llama "customer_id" según las constantes
-            credParams.put("customer_id", generatedCustomerId);
-            credParams.put(DbConstants.USERNAME, customer.getCredential().getUsername());
-            credParams.put(DbConstants.PASSWORD, customer.getCredential().getPassword());
+            credParams.put(DbConstants.CUSTOMER_ID, generatedCustomerId);
+            credParams.put(DbConstants.USERNAME, username);
+            credParams.put(DbConstants.PASSWORD, hashedPassword);
+
             int affectedRows = credentialInsert.execute(credParams);
             if (affectedRows == 0) {
                 transactionManager.rollback(status);
-                return Either.left(new GeneralDatabaseError(ErrorConstants.NO_ROWS_AFFECTED_ERROR_CODE, "No se insertó la credencial"));
+                return Either.left(new GeneralDatabaseError(
+                        ErrorConstants.NO_ROWS_AFFECTED_ERROR_CODE,
+                        ErrorConstants.UNIQUE_FIELD_CONSTRAINT_ERROR
+                ));
             }
 
             transactionManager.commit(status);
-            result = Either.right(generatedCustomerId);
+            return Either.right(generatedCustomerId);
+
         } catch (Exception e) {
             transactionManager.rollback(status);
-            result = Either.left(new GeneralDatabaseError(ErrorConstants.GENERAL_DATABASE_ERROR_CODE, "Error al insertar cliente: " + e.getMessage()));
+            return Either.left(new GeneralDatabaseError(
+                    ErrorConstants.GENERAL_DATABASE_ERROR_CODE,
+                    ErrorConstants.NO_ROWS_AFFECTED + e.getMessage()
+            ));
         }
-        return result;
     }
 
-    /* SAVE ANTIGUO
+    private Customer checkEmptyItemFields(Customer customer) {
+        if (customer.getPhone().isEmpty() || customer.getPhone().isBlank()) {
+            customer.setPhone(null);
+        }
+        if (Objects.equals(customer.getDateOfBirth(), LocalDate.now())) {
+            customer.setDateOfBirth(null);
+        }
+        return customer;
+    }
+
+    /* OLD SAVE
     @Override
     public Either<RestaurantError, Integer> save(Customer newCustomer) {
         Customer customer = checkEmptyItemFields(newCustomer);
@@ -287,6 +320,7 @@ public class DaoCustomersImpl implements DaoCustomers {
     }
     */
 
+    /* OLD CHECK
     private Either<RestaurantError, Integer> insertCredential(TransactionStatus status, DataSourceTransactionManager transactionManager, SimpleJdbcInsert insert, Map<String, Object> params) {
         int generatedKey;
         try {
@@ -296,15 +330,7 @@ public class DaoCustomersImpl implements DaoCustomers {
             transactionManager.rollback(status);
             return Either.left(new QueryExecutionError(ErrorConstants.UNIQUE_FIELD_CONSTRAINT_ERROR_CODE, ErrorConstants.UNIQUE_FIELD_CONSTRAINT_ERROR));
         }
-    }
+    } */
 
-    private Customer checkEmptyItemFields(Customer customer) {
-        if (customer.getPhone().isEmpty() || customer.getPhone().isBlank()) {
-            customer.setPhone(null);
-        }
-        if (Objects.equals(customer.getDateOfBirth(), LocalDate.now())) {
-            customer.setDateOfBirth(null);
-        }
-        return customer;
-    }
+
 }

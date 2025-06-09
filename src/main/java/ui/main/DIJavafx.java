@@ -1,9 +1,11 @@
 package ui.main;
 
+import common.constants.Constants;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
 import jakarta.enterprise.util.AnnotationLiteral;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -17,9 +19,12 @@ public class DIJavafx extends Application {
     public void start(Stage primaryStage) throws Exception {
         SeContainerInitializer initializer = SeContainerInitializer.newInstance();
         final SeContainer container = initializer.initialize();
-        primaryStage.setMinWidth(800);
-        primaryStage.setMinHeight(600);
-        primaryStage.setResizable(false);
+        primaryStage.setMinWidth(1920);
+        primaryStage.setMinHeight(1080);
+        primaryStage.setResizable(false); // Resize the window
+        primaryStage.setMaximized(true); // Maximize the window when you start it
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream(Constants.LOGO_IMAGE))); // Logo Image load
+
         container.getBeanManager().getEvent().select(new AnnotationLiteral<StartupScene>() {
         }).fire(primaryStage);
     }
